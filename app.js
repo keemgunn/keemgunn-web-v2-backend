@@ -16,7 +16,7 @@ app.use(static)
 
 
 // ---------- PORT SETTING
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.CLI_PORT || 8080;
 app.listen(PORT, () => {
   console.log(`=== Listening on port ${PORT} ... @app.js`);
 });
