@@ -1,16 +1,18 @@
 {
-  "name": "keemgunn.com-v2-backend",
-  "version": "1.0.0",
-  "description": "",
+  "name": "keemgunn-web-v2-backend",
+  "version": "0.1.0",
+  "description": "backend server build for keemgunn.net",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "export NODE_ENV=development && nodemon app.js",
+    "serve": "export NODE_ENV=production && node app.js"
   },
   "author": "gunnkeem",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
+    "errorhandler": "^1.5.1",
     "express": "^4.17.1",
     "mongoose": "^6.0.7"
   }
