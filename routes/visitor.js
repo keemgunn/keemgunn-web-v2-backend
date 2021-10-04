@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
 // const axios = require('axios');
-const heimdall = require('../modules/heimdall');
-const vendor = require('../routes/vendor');
 
 
 // DOOR BELL ----------------------------------
