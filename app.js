@@ -19,8 +19,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 
-
-// ---------- SERVE
+// ---------------- SERVE
 console.log(`[==== SERVICE RUN LEVEL : ${process.env.NODE_ENV} ====]`);
 const static = express.static(path.join(__dirname, 'public'));
 app.use(static)
@@ -28,8 +27,18 @@ app.use(static)
 
 
 
+// ---------------- for VUE-ROUTER
+app.all("*", (req, res) => {
+  try {
+    res.sendFile(path.join(__dirname, 'public/index.html'));
+  } catch (error) {
+    res.json({ success: false, message: "Something went wrong" });
+  }
+});
 
-// ---------- PORT SETTING
+
+
+// ---------------- PORT SETTING
 const PORT = (process.env.NODE_ENV === "production") ? 1080 : 8080;
 app.listen(PORT, () => {
   console.log(`[==== Listening on port ${PORT} ... @app.js ====]`);
