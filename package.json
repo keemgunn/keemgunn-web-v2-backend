@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "dev": "export NODE_ENV=development && nodemon app.js",
-    "serve": "export NODE_ENV=production && node app.js"
+    "serve": "export NODE_ENV=production && nodemon app.js"
   },
   "author": "gunnkeem",
   "license": "ISC",
@@ -15,6 +15,8 @@
     "cors": "^2.8.5",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
-    "mongoose": "^6.0.7"
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^6.0.7",
+    "nanoid": "^3.1.28"
   }
 }
