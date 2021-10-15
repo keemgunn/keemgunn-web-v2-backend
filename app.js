@@ -54,3 +54,5 @@ const PORT = (process.env.NODE_ENV === "production") ? 1080 : 8080;
 app.listen(PORT, () => {
   console.log(`[@app.js] Listening on port ${PORT} \n\n\n`);
 });
+
+const mongo = require('./modules/mongo');

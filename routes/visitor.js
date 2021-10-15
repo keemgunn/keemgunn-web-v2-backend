@@ -5,10 +5,8 @@ const router = express.Router();
 
 // DOOR BELL ----------------------------------
 router.post('/doorknob', (req, res) => {
-  console.log(`[@visitor.js] Door Bell Ring`);
-  console.log(req.body.ipv4);
+  console.log(`[@visitor.js] Door Bell Ring:`, req.body.ipv4);
   res.json({ greeting: "hello, server listening." });
-  console.log(vendor.vault.ticket);
 })
 
 
