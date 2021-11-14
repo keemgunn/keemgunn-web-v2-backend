@@ -3,24 +3,36 @@ const errorHandler = require("errorhandler");
 const path = require('path');
 const cors = require("cors");
 const axios = require('axios');
+const { checkContentsServer } = require('./modules/heimdall');
 
 
 // EXPRESS APP SETTING ------------------------
 const app = express();
-app.use(express.json());
-app.use(express.text({ defaultCharset: "utf-8" }));
+app.use(express.json({
+  limit: "50mb"
+}));
+app.use(express.text({
+  defaultCharset:"utf-8",
+  limit: "50mb"
+}));
 app.use(express.urlencoded({ extended: true })); // parse requests of content-type - application/x-www-form-urlencoded
 
 
 
 // DEVELOP / PRODUCITION SETTING --------------
+const corsOptions = {
+  origin: [
+    "http://localhost:4433",
+    "http://13.76.155.192",
+  ],
+  optionsSuccessStatus: 200
+};
+app.use(cors(corsOptions)); 
 if (process.env.NODE_ENV === "development") {
   app.use(errorHandler({ dumpExceptions: true, showStack: true }))
-  app.use(cors({ origin: "http://localhost:8084" }));
 }
 if (process.env.NODE_ENV === "production") {
   app.use(errorHandler())
-  app.use(cors({ origin: "http://localhost:8080" }));
 }
 
 
@@ -30,6 +42,12 @@ console.log(`[@app.js] SERVICE RUN LEVEL : ${process.env.NODE_ENV}`);
 const static = express.static(path.join(__dirname, 'public'));
 app.use(static)
 
+
+
+// CONTENTS SERVER ----------------------------
+checkContentsServer();
+const vendor = require('./routes/vendor');
+app.use('/vendor', vendor);
 
 
 // API ROUTING --------------------------------
