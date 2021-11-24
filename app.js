@@ -4,6 +4,8 @@ const path = require('path');
 const cors = require("cors");
 const axios = require('axios');
 const { checkContentsServer } = require('./modules/heimdall');
+const { logg } = require('./modules/logger');
+
 
 
 // EXPRESS APP SETTING ------------------------
@@ -38,7 +40,7 @@ if (process.env.NODE_ENV === "production") {
 
 
 // SERVE --------------------------------------
-console.log(`[@app.js] SERVICE RUN LEVEL : ${process.env.NODE_ENV}`);
+logg(`[@app.js] SERVICE RUN LEVEL : ${process.env.NODE_ENV}`);
 const static = express.static(path.join(__dirname, 'public'));
 app.use(static)
 
@@ -70,7 +72,7 @@ app.all("*", (req, res) => {
 // PORT SETTING -------------------------------
 const PORT = (process.env.NODE_ENV === "production") ? 1080 : 8080;
 app.listen(PORT, () => {
-  console.log(`[@app.js] Listening on port ${PORT} \n\n\n`);
+  logg(`[@app.js] Listening on port ${PORT}\n\n\n`);
 });
 
 const mongo = require('./modules/mongo');

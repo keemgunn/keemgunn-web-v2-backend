@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const { generateCliVendorToken } = require('../modules/heimdall');
-// const axios = require('axios');
+const { logg } = require('../modules/logger');
 
 // DOOR BELL ----------------------------------
 router.post('/doorknob', (req, res) => {
-  console.log(`[@visitor.js] Door Bell Ring:`, req.body.ipv4);
+  logg(`[@visitor.js] Door Bell Ring:`, req.body.ipv4);
   const contentsToken = generateCliVendorToken();
   res.json({
     greeting: "hello, server listening.",

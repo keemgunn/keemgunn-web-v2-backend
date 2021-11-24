@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const { getCliKey } = require('../modules/heimdall');
+const { logg } = require('../modules/logger');
 
 // LINK REQUEST -------------------------------
 router.get('/request-cli-key', (req, res) => {
-  console.log(`[@vendor.js] CLI KEY REQUEST DETECTED`);
+  logg(`[@vendor.js] CLI KEY REQUEST DETECTED`);
   res.json({
     message: "[@CLI_SERVER] CLI KEY RESPONSED",
     cli_key: getCliKey()
   });
-  console.log(`[@vendor.js] CLI KEY REQUEST SERVED`);
+  logg(`[@vendor.js] CLI KEY REQUEST SERVED : ${getCliKey()}`);
 })
 
 
