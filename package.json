@@ -1,6 +1,6 @@
 {
   "name": "keemgunn-web-v2-backend",
-  "version": "0.1.0",
+  "version": "0.9.0",
   "description": "backend server build for keemgunn.net",
   "main": "app.js",
   "scripts": {

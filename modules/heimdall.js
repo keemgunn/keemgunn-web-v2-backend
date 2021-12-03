@@ -6,7 +6,7 @@ const gen_nanoid = nanoid.customAlphabet('1234567890abcdef', 10);
 const { logg } = require('./logger');
 
 let cliVendorConfigs = {
-  vendorURL: 'http://13.76.155.192',
+  vendorURL: 'http://127.0.0.1:4433',
   cliKey: 'cli-dev'
 }
 
